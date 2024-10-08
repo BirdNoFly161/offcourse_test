@@ -16,7 +16,7 @@ let MULTER_UPLOAD;
 if (environment != "production") {
   dotenv.config();
   clientURLS = ["http://localhost:5173"];
-  MULTER_UPLOAD = "temp/";
+  MULTER_UPLOAD = "/tmp";
 } else {
   clientURLS = ["https://top-pressing.vercel.app"];
   MULTER_UPLOAD = "/tmp";
