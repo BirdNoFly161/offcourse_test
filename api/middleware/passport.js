@@ -41,7 +41,7 @@ export default function passport_middleware(app) {
   passport.use(new GoogleStrategy({
     clientID: google_client_id,
     clientSecret: google_secret,
-    callbackURL: "http://localhost:3001/users/register/google/callback"
+    callbackURL: "https://offcourse-test-backend.vercel.app/users/register/google/callback"
   },
   async function(accessToken, refreshToken, profile, done) {
     try {
