@@ -45,14 +45,19 @@ export default function passport_middleware(app) {
   },
   async function(accessToken, refreshToken, profile, done) {
     try {
-      const newUser = await new User({
-        googleId: profile.id,
-        username: `user${profile.id}`,
-        email: profile.email,
-        name: profile.displayName,
-      }).save();
-      console.log(newUser)
-      done(null, newUser);
+        let user = await User.findOne({ _id: jwt_payload._id });
+        if (user) {
+          done(null, user);
+        }else{
+          const newUser = await new User({
+            googleId: profile.id,
+            username: `user${profile.id}`,
+            email: profile.email,
+            name: profile.displayName,
+          }).save();
+          console.log(newUser)
+          done(null, newUser);
+        }
     } catch (err) {
       console.log(err);
     }
