@@ -3,6 +3,7 @@ import * as Linking from 'expo-linking'
 import React from "react";
 import API from '../api';
 import { apiURL } from "@/configs/environement";
+import * as WebBrowser from 'expo-web-browser';
 
 export default function Index() {
   const [identifier, setIdentifier]= React.useState('')
@@ -13,7 +14,8 @@ export default function Index() {
   }
 
   const onLoginGoogle= async ()=>{
-    Linking.openURL(`${apiURL}/users/register/google`)
+    //Linking.openURL(`${apiURL}/users/register/google`)
+    await WebBrowser.openBrowserAsync(`${apiURL}/users/register/google`)
   }
 
   return (

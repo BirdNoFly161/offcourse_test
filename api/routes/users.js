@@ -60,7 +60,7 @@ router.get("/register/google/callback",
 passport.authenticate('google', { failureRedirect: "/" ,session: false,}),
  async function register_google_callback(req, res){
   console.log('here')
-  res.redirect('myapp://login');
+  res.redirect('myapp://');
 });
 
 router.post("/login", async function login_user(req, res) {
